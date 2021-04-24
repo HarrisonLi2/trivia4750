@@ -1,0 +1,564 @@
+@font-face {
+    font-family: "Korinna";
+    src: "./res/fonts/Korinna Regular.ttf" format("truetype");
+    font-display: optional;
+}
+
+@media screen and (max-width: 1225px) and (min-width: 1045px) {
+    .priority-6 {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1045px) and (min-width: 900px) {
+    .priority-6 {
+        display: none;
+    }
+    .priority-5 {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 900px) and (min-width: 700px) {
+    .priority-6 {
+        display: none;
+    }
+    .priority-5 {
+        display: none;
+    }
+    .priority-4 {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 700px) and (min-width: 600px) {
+    .priority-6 {
+        display: none;
+    }
+    .priority-5 {
+        display: none;
+    }
+    .priority-4 {
+        display: none;
+    }
+    .priority-3 {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .priority-6 {
+        display: none;
+    }
+    .priority-5 {
+        display: none;
+    }
+    .priority-4 {
+        display: none;
+    }
+    .priority-3 {
+        display: none;
+    }
+    .priority-2 {
+        display: none;
+    }
+    .priority-1 {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 1026px) {
+    #fadeshow1 {
+        display: none;
+    }
+}
+
+.center {
+    margin: 0 auto;
+    text-align: center;
+}
+
+h1,
+h2 {
+    color: white;
+}
+
+body {
+    background-color: #7e7d8f;
+}
+
+p {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+button.navigation {
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+button.navigation:hover {
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+object.header {
+    width: 100%;
+}
+
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+    padding: 0;
+    padding-left: 10px;
+}
+
+li {
+    color: white;
+}
+
+nav {
+    color: purple;
+}
+
+ul.horizontal {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+nav ul li {
+    float: left;
+}
+
+nav li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+nav li a:hover {
+    background-color: rgb(31, 44, 59);
+}
+
+div.content {
+    width: 100%;
+}
+
+.bulletless {
+    list-style: none;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+img.logo {
+    width: 50%;
+    padding-top: 0%;
+}
+
+.subtitle {
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+img.about {
+    width: 50%;
+    padding-top: 0%;
+}
+
+h4.about {
+    color: white;
+}
+
+img.main {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    width: 80%;
+}
+
+b {
+    font-style: oblique;
+}
+
+h1.welcome {
+    font-family: "Korinna";
+    font-size: 7vw;
+}
+
+h2.welcome {
+    font-family: "Korinna";
+    font-size: 5vw;
+}
+
+h4.login_text {
+    font-family: "Korinna";
+    font-size: 3vw;
+    margin-top: 5%;
+}
+
+h3.center {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    color: white;
+}
+
+h4.more {
+    color: white;
+    text-align: center;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+iframe {
+    padding-top: 5%;
+    padding-bottom: 0%;
+    display: block;
+    margin: auto;
+}
+
+.flex-row {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 0 4px;
+}
+
+
+/* Create four equal columns that sits next to each other */
+
+.flex-column {
+    flex: 25%;
+    max-width: 25%;
+    padding: 0 4px;
+}
+
+.flex-column img {
+    margin-top: 8px;
+    vertical-align: middle;
+    width: 100%;
+}
+
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+
+@media screen and (max-width: 800px) {
+    .flex-column {
+        flex: 50%;
+        max-width: 50%;
+    }
+}
+
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+
+@media screen and (max-width: 600px) {
+    .flex-column {
+        flex: 100%;
+        max-width: 100%;
+    }
+}
+
+label {
+    display: block;
+    color: black;
+}
+
+input,
+textarea {
+    display: inline-block;
+    font-family: arial;
+    padding: 8px 12px 8px 12px;
+    margin: 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    width: 100%;
+    font-size: small;
+    text-align: center;
+    align-self: center;
+}
+
+span {
+    color: red;
+    align-self: center;
+    text-align: center;
+}
+
+input[type="submit"] {
+    padding: 5px 15px;
+    border: 0 none;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+}
+
+input[type="submit"]:hover {
+    background-color: #ccceee;
+}
+
+.msg {
+    margin-left: 40px;
+    font-style: italic;
+    color: red;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+    padding: 0;
+    margin: 0;
+    position: relative;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    color: WhiteSmoke;
+    padding: 10px;
+}
+
+.login {
+    margin-left: 25%;
+    margin-right: 25%;
+    box-shadow: 5px 10px;
+    background-color: white;
+    width: 50%;
+}
+
+.login_or {
+    text-align: center;
+    display: block;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.user_login {
+    width: 100%;
+    justify-self: center;
+    justify-content: center;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.user_signup {
+    width: 75%;
+    justify-content: center;
+}
+
+.google_login {
+    width: 40%;
+}
+
+table {
+    background: white;
+    align-content: center;
+    width: 100%;
+}
+
+tr th {
+    color: black;
+}
+
+li.menu {
+    list-style: none;
+    background-color: white;
+}
+
+@media screen and (max-width: 600px) {
+    div.my_community_games {
+        width: 100px;
+    }
+}
+
+.games_menu {
+    height: 50vw;
+    background-color: white;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.creation {
+    height: 3vw;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+button a {
+    color: white;
+}
+
+.game_creator {
+    background-color: white;
+    justify-content: space-between;
+    margin: 2.5%;
+    overflow-y: scroll;
+    overflow-x: scroll;
+}
+
+@media screen and (max-width: 1200px) {
+    .game_creator {
+        background-color: white;
+        justify-content: space-between;
+        margin: 2.5%;
+    }
+}
+
+.game_creator_form {
+    min-width: 1100px;
+}
+
+.bottom {
+    position: absolute;
+    float: inline-end;
+    bottom: 0;
+    left: 25%;
+    width: 50%;
+    justify-content: center;
+}
+
+a.highlight:hover {
+    color: #e4c200;
+}
+
+img.game_tile {
+    width: 100px;
+    height: 100px;
+}
+
+.game_creator_container {
+    width: 100%;
+}
+
+textarea.clue {
+    font-family: "Korinna";
+    resize: none;
+    width: 100%;
+    height: 50%;
+    font-size: large;
+}
+
+a.home_link {
+    width: 50%;
+}
+
+textarea.clue::placeholder {
+    color: rgb(184, 184, 184);
+    content: "Write a clue!";
+}
+
+.category {
+    font-size: 15px;
+}
+
+
+/* http://css-workshop.com/hover-box-text-over-images-on-hover-and-more/ */
+
+.hvrbox,
+.hvrbox * {
+    box-sizing: border-box;
+}
+
+.hvrbox {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    max-width: 100%;
+    height: auto;
+}
+
+.hvrbox img {
+    max-width: 100%;
+}
+
+.hvrbox .hvrbox-layer_bottom {
+    display: block;
+}
+
+.hvrbox .hvrbox-layer_top {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    padding: 15px;
+    -moz-transition: all 0.4s ease-in-out 0s;
+    -webkit-transition: all 0.4s ease-in-out 0s;
+    -ms-transition: all 0.4s ease-in-out 0s;
+    transition: all 0.4s ease-in-out 0s;
+}
+
+.hvrbox:hover .hvrbox-layer_top,
+.hvrbox.active .hvrbox-layer_top {
+    opacity: 1;
+}
+
+.hvrbox .hvrbox-text {
+    text-align: center;
+    font-size: 18px;
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -moz-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.hvrbox .hvrbox-text_mobile {
+    font-size: 15px;
+    border-top: 1px solid rgb(179, 179, 179);
+    /* for old browsers */
+    border-top: 1px solid rgba(179, 179, 179, 0.7);
+    margin-top: 5px;
+    padding-top: 2px;
+    display: none;
+}
+
+.hvrbox.active .hvrbox-text_mobile {
+    display: block;
+}
