@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="./css/style.css" type="text/css" />
 
 <head>
-    <title>Jeopardy!</title>
+    <title>Trivia!</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Jacob Herring (jlh2ag)" />
@@ -18,7 +18,6 @@
         <h1 class="welcome"> Logging you out </h1>
         <h2 class="welcome"> Thanks for playing... </h1>
 
-        <img class="logo" src="./res/Jeopardy_Logo.png" alt="">
 </div>
 
 <?php 

@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="./css/style.css" type="text/css" />
 
 <head>
-    <title>Jeopardy!</title>
+    <title>Trivia!</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Jacob Herring (jlh2ag)" />
@@ -24,7 +24,6 @@
     <div>
         <p> Logged in as <?php echo $_SESSION['Username'] ?> </p>
     </div>
-    <img style="display:block; margin-left:auto; margin-right:auto; width:15%; padding-top:3%;" src="./res/Jeopardy_Logo.png" alt="Jeopardy!">
 
     <div class=" games_menu d-flex">
         <div class="my_community_games ">

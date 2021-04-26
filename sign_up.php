@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="./css/style.css" type="text/css" />
 
 <head>
-    <title>Jeopardy!</title>
+    <title>Trivia!</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Jacob Herring (jlh2ag)" />
@@ -63,7 +63,6 @@
     ?>
     <div class="center">
         <h1 class="welcome"> Welcome To... </h1>
-        <img class="logo" src="./res/Jeopardy_Logo.png" alt="">
     </div>
     <div class="login center justify-content-between">
         <h4 class="center login_text"> Create Your New Account </h4>

@@ -14,7 +14,7 @@
 //        Thus, specify the correct database name
 
 // hostname
-$hostname = 'localhost:3306';
+$hostname = 'usersrv01.cs.virginia.edu:3306';
 
 // database name
 $dbname = 'rml8daw_trivia';
