@@ -42,7 +42,7 @@
     function validate($username, $pwd)
     {
         if (isset($_POST['username']) && isset($_POST['pwd'])) {
-            global $db;
+            global $db, $loginFailed;
             $query = 'SELECT * FROM login WHERE (Username = :username AND Password = :password)';
             $statement = $db->prepare($query);
             $statement->bindValue(':username', $username);
