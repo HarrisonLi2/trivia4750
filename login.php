@@ -43,7 +43,7 @@
     {
         if (isset($_POST['username']) && isset($_POST['pwd'])) {
             global $db;
-            $query = 'SELECT * FROM users WHERE (Username = :username AND Password = :password)';
+            $query = 'SELECT * FROM login WHERE (Username = :username AND Password = :password)';
             $statement = $db->prepare($query);
             $statement->bindValue(':username', $username);
             //logic that enables the user to login without re-inputting password if they somehow end up back at the home page (without explicitly logging out first)

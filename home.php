@@ -59,7 +59,7 @@
 
 
                 global $db;
-                $query = 'SELECT * FROM game_info';
+                $query = 'SELECT * FROM games';
                 $statement = $db->prepare($query);
 
                 $statement->execute();
