@@ -40,8 +40,8 @@
         <div>
             <form action="" method="POST">
                 <fieldset>
-                    <label for="gamename">Game name: </label>
-                    <input type="text" class="form-control" name="gamename" id="gamename" placeholder="Enter Game Name" required/>
+                    <label for="gamename">Category Name: </label>
+                    <input type="text" class="form-control" name="catname" id="catname" placeholder="Enter Category Name" required/>
 
                     <label for="gamename">Difficulty (Easiest 1 - 10 Hardest): </label>
                     <input type="number" class="form-control" name="rating" id="rating" placeholder="Enter Game Difficulty" min="1" max="10" required/>

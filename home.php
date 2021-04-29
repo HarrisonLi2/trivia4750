@@ -60,26 +60,25 @@
                 </tr>
                 <?php
 
+                    global $db;
+                    $query = 'SELECT * FROM games';
+                    $statement = $db->prepare($query);
 
-                global $db;
-                $query = 'SELECT * FROM games';
-                $statement = $db->prepare($query);
-
-                $statement->execute();
-                $results = $statement->fetchAll();
-                foreach ($results as $result) {
-                    echo "<tr>";
-                    echo "<td>" . $result["game_name"] . "</td>";
-                    echo "<td>" . $result["game_rating"] . "</td>";
-                    echo "<td>" . $result["creator"] . "</td>";
-                    echo "<td class='priority-1'>" . json_decode($result["cat1"],true)['category_name'] . "</td>";
-                    echo "<td class='priority-2'>" . json_decode($result["cat2"],true)['category_name'] . "</td>";
-                    echo "<td class='priority-3'>" . json_decode($result["cat3"],true)['category_name'] . "</td>";
-                    echo "<td class='priority-4'>" . json_decode($result["cat4"],true)['category_name'] . "</td>";
-                    echo "<td class='priority-5'>" . json_decode($result["cat5"],true)['category_name'] . "</td>";
-                    echo "<td class='priority-6'>" . json_decode($result["cat6"],true)['category_name'] . "</td>";
-                    echo "</tr>";
-                }
+                    $statement->execute();
+                    $results = $statement->fetchAll();
+                    foreach ($results as $result) {
+                        echo "<tr>";
+                        echo "<td>" . $result["game_name"] . "</td>";
+                        echo "<td>" . $result["game_rating"] . "</td>";
+                        echo "<td>" . $result["creator"] . "</td>";
+                        echo "<td class='priority-1'>" . json_decode($result["cat1"],true)['category_name'] . "</td>";
+                        echo "<td class='priority-2'>" . json_decode($result["cat2"],true)['category_name'] . "</td>";
+                        echo "<td class='priority-3'>" . json_decode($result["cat3"],true)['category_name'] . "</td>";
+                        echo "<td class='priority-4'>" . json_decode($result["cat4"],true)['category_name'] . "</td>";
+                        echo "<td class='priority-5'>" . json_decode($result["cat5"],true)['category_name'] . "</td>";
+                        echo "<td class='priority-6'>" . json_decode($result["cat6"],true)['category_name'] . "</td>";
+                        echo "</tr>";
+                    }
                 ?>
             </thead>
 
@@ -93,7 +92,7 @@
     </div>
     <br>
     <div class="creation">
-        <span style="float:left;"><button class="btn btn-primary"> <a onclick="confirmLogOut()"> Log Out</a> </button></span>
+        <span style="float:left;"><button class="btn btn-primary"> <a href="./logout.php" onclick="confirmLogOut()"> Log Out</a> </button></span>
         <span style="float:right;"><button class="btn btn-primary"> <a href="./creation.php"> Create Your Own Game!</a> </button></span>
 
     </div>
