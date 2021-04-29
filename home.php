@@ -37,6 +37,12 @@
                 <ul>
                     <a href="./profileEdit.php"> Edit Profile</a>
                 </ul>
+                <ul>
+                    <a href="./creation.php">Create a Game</a>
+                </ul>
+                <ul>
+                    <a href="./createCat.php">Create a Game Category</a>
+                </ul>
             </li>
         </div>
 
@@ -47,16 +53,6 @@
                     <th> <button class="btn btn-primary" onclick="sortTable(0)"> Game Name: </button> </th>
                     <th> <button class="btn btn-primary" onclick="sortTable(1)"> Game Rating: </button> </th>
                     <th> <button class="btn btn-primary" onclick="sortTable(2)"> Created By: </button> </th>
-
-                    <div class="table_info_extra">
-                        <th class="priority-1"> Category One: </th>
-                        <th class="priority-2"> Category Two: </th>
-                        <th class="priority-3"> Category Three: </th>
-                        <th class="priority-4"> Category Four: </th>
-                        <th class="priority-5"> Category Five: </th>
-                        <th class="priority-6"> Category Six: </th>
-                    </div>
-
                 </tr>
                 <?php
 
@@ -71,12 +67,6 @@
                         echo "<td>" . $result["game_name"] . "</td>";
                         echo "<td>" . $result["game_rating"] . "</td>";
                         echo "<td>" . $result["creator"] . "</td>";
-                        echo "<td class='priority-1'>" . json_decode($result["cat1"],true)['category_name'] . "</td>";
-                        echo "<td class='priority-2'>" . json_decode($result["cat2"],true)['category_name'] . "</td>";
-                        echo "<td class='priority-3'>" . json_decode($result["cat3"],true)['category_name'] . "</td>";
-                        echo "<td class='priority-4'>" . json_decode($result["cat4"],true)['category_name'] . "</td>";
-                        echo "<td class='priority-5'>" . json_decode($result["cat5"],true)['category_name'] . "</td>";
-                        echo "<td class='priority-6'>" . json_decode($result["cat6"],true)['category_name'] . "</td>";
                         echo "</tr>";
                     }
                 ?>
