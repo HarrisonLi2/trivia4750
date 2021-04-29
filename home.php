@@ -32,7 +32,7 @@
                     <a href="./mygames.php"><button class="btn btn-primary" >My Games</button></a>
                 </ul>
                 <ul>
-                    <a href="./allgames.php"><button class="btn btn-primary" >Community Games</button> </a>
+                    <a href="./allgames.php"><button class="btn btn-primary" >Browse Games</button> </a>
                 </ul>
                 <ul>
                     <a href="./profileEdit.php"> <button class="btn btn-primary" >Edit Profile</button></a>
