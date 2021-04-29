@@ -46,6 +46,8 @@
                     <label for="rating">Difficulty (Easiest 1 - 10 Hardest): </label>
                     <input type="number" class="form-control" name="rating" id="rating" placeholder="Enter Game Difficulty" min="1" max="10" required/>
 
+                    <label for="checkboxes[]"> Select Categories: </label>
+
                     <?php
                         global $db;
                         $query = 'SELECT * FROM categories';
@@ -63,34 +65,42 @@
                 </fieldset>
 
             </form>
-
-            <?php
-                if (isset($_POST['sub'])) {
-                // collect value of input field
-                $gameid = uniqid();
-                
-                global $db;
-
-                //insert new game
-                $query = 'INSERT INTO games (game_id, game_name, game_rating, creator) VALUES ('.$gameid.', '.$_POST['gamename'].', '.$_SESSION['Username'].', '.(int)$_POST['rating'].')';
-                $statement = $db->prepare($query);
-
-                $statement->execute();
-                
-                //insert selected categories
-                foreach($_POST['checkboxes'] as $checkbox) {
-                    $query = 'INSERT INTO game_contains (game_id, cat_id) VALUES ('.$gameid.', '.$checkbox.')';
-                    $statement = $db->prepare($query);
-
-                    $statement->execute();
-                }
-
-            ?>
-   
         </div>
     
     </div>
 
+    <?php
+                if (isset($_POST['sub'])) {
+                    // collect value of input field
+    
+                    global $db;
+
+                    //insert new game
+                    $query = 'INSERT INTO games (game_name, game_rating, creator) VALUES ("'.$_POST['gamename'].'", '.(int)$_POST['rating'].', "'.$_SESSION['Username'].'")';
+            
+                    $statement = $db->prepare($query);
+
+                    $statement->execute();
+                    
+                    $lastID = $db->lastInsertId();
+
+                    //insert selected categories
+                    foreach($_POST['checkboxes'] as $checkbox) {
+                        $query = 'INSERT INTO game_contains (game_id, cat_id) VALUES ('.$lastID.', '.$checkbox.')';
+                        $statement = $db->prepare($query);
+
+                        $statement->execute();
+                    }
+
+                    //add new game to user's game list
+                    $query = 'INSERT INTO has_game (user_id, game_id) VALUES ('.$_SESSION['ID'].', '.$lastID.')';
+            
+                    $statement = $db->prepare($query);
+
+                    $statement->execute();
+
+                }
+    ?>
 
 </body>
 </html>

@@ -40,61 +40,51 @@
         <div>
             <form action="" method="POST">
                 <fieldset>
-                    <label for="gamename">Category Name: </label>
+                    <label for="catname">Category Name: </label>
                     <input type="text" class="form-control" name="catname" id="catname" placeholder="Enter Category Name" required/>
 
-                    <label for="gamename">Difficulty (Easiest 1 - 10 Hardest): </label>
-                    <input type="number" class="form-control" name="rating" id="rating" placeholder="Enter Game Difficulty" min="1" max="10" required/>
-
                     <?php
-                        global $db;
-                        $query = 'SELECT * FROM categories';
-                        $statement = $db->prepare($query);
+                        // global $db;
+                        // $query = 'SELECT * FROM categories';
+                        // $statement = $db->prepare($query);
 
-                        $statement->execute();
-                        $results = $statement->fetchAll();
-                        foreach ($results as $result) {
-                            echo '<label>'.$result["cat_name"]."</label>";
-                            echo '<input type="checkbox" name="checkboxes[]" value="'.$result["cat_id"].'"/>';
-                        }
+                        // $statement->execute();
+                        // $results = $statement->fetchAll();
+                        // foreach ($results as $result) {
+                        //     echo '<label>'.$result["cat_name"]."</label>";
+                        //     echo '<input type="checkbox" name="checkboxes[]" value="'.$result["cat_id"].'"/>';
+                        // }
                     ?>
                     
-                    <input type="submit" name="sub" style="margin-bottom:5%; margin-top:5%" value="Create Game" class="btn btn-secondary"/>
+                    <input type="submit" name="sub" style="margin-bottom:5%; margin-top:5%" value="Create Category" class="btn btn-secondary"/>
                 </fieldset>
 
             </form>
-
-            <?php
+   
+        </div>
+    </div>
+    <?php
                 if (isset($_POST['sub'])) {
-                // collect value of input field
-                $gameid = uniqid()
-                
-                global $db;
+                    // collect value of input field
 
-                //insert new game
-                $query = 'INSERT INTO games (game_id, game_name, game_rating, creator) VALUES ('.$gameid.', '.$_POST['gamename'].', '.$_SESSION['Username'].', '.(int)$_POST['rating'].')';
-                $statement = $db->prepare($query);
+                    global $db;
 
-                $statement->execute();
-                
-                //insert selected categories
-                foreach($_POST['checkboxes'] as $checkbox) {
-                    $query = 'INSERT INTO game_contains (game_id, cat_id) VALUES ('.$gameid.', '.$checkbox.')';
+                    //insert new game
+                    $query = 'INSERT INTO categories (cat_name) VALUES ("'.$_POST['catname'].'")';
+                    echo '<p>' . $query. '</p>';
                     $statement = $db->prepare($query);
 
                     $statement->execute();
-                }
+                
+                    // //insert selected categories
+                    // foreach($_POST['checkboxes'] as $checkbox) {
+                    //     $query = 'INSERT INTO game_contains (game_id, cat_id) VALUES ('.$gameid.', '.$checkbox.')';
+                    //     $statement = $db->prepare($query);
 
+                    //     $statement->execute();
+                    // }
+              }
             ?>
-   
-        </div>
-    
-    
-
-
-        </table>
-    </div>
-
 
 </body>
 </html>
