@@ -29,10 +29,10 @@
         <div class="my_community_games ">
             <li class="menu">
                 <ul>
-                    <a href=""> My Games </a>
+                    <a href="./mygames.php"> My Games </a>
                 </ul>
                 <ul>
-                    <a href=""> Community Games</a>
+                    <a href="./allgames.php"> Community Games</a>
                 </ul>
                 <ul>
                     <a href="./profileEdit.php"> Edit Profile</a>
@@ -41,44 +41,16 @@
                     <a href="./creation.php">Create a Game</a>
                 </ul>
                 <ul>
-                    <a href="./createCat.php">Create a Game Category</a>
+                    <a href="./createCat.php">Create a Category</a>
+                </ul>
+                <ul>
+                    <a href="./createQuestion.php">Create a Question</a>
                 </ul>
             </li>
         </div>
 
 
-        <table id="game_table" class="game_table">
-            <thead>
-                <tr>
-                    <th> <button class="btn btn-primary" onclick="sortTable(0)"> Game Name: </button> </th>
-                    <th> <button class="btn btn-primary" onclick="sortTable(1)"> Game Rating: </button> </th>
-                    <th> <button class="btn btn-primary" onclick="sortTable(2)"> Created By: </button> </th>
-                </tr>
-                <?php
-
-                    global $db;
-                    $query = 'SELECT * FROM games';
-                    $statement = $db->prepare($query);
-
-                    $statement->execute();
-                    $results = $statement->fetchAll();
-                    foreach ($results as $result) {
-                        echo "<tr>";
-                        echo "<td>" . $result["game_name"] . "</td>";
-                        echo "<td>" . $result["game_rating"] . "</td>";
-                        echo "<td>" . $result["creator"] . "</td>";
-                        echo "</tr>";
-                    }
-                ?>
-            </thead>
-
-            <?php
-
-
-
-            ?>
-
-        </table>
+        
     </div>
     <br>
     <div class="creation">

@@ -24,7 +24,7 @@
         <div class="my_community_games ">
             <li class="menu">
                 <ul>
-                    <a href="./home.php">Back to Home</a>
+                     <a href="./home.php"><button class="btn btn-primary" >Back to Home</button></a>
                 </ul>
            
             </li>
