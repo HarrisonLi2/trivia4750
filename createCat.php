@@ -31,10 +31,10 @@
         </div>
 
         <div class="col-md-4">
-            <h3>Make Game</h3>
+            <h3>Create a Category</h3>
 
-            <h3>Games require categories: create a category</h3>
-            <span style="float:right;"><button class="btn btn-primary"> <a href="./createCat.php"> Create a Category</a> </button></span>
+            <h3>Once you have created some categories return to create a game</h3>
+            <span style="float:right;"><button class="btn btn-primary"> <a href="./creation.php"> Return to Create a Game</a> </button></span>
         </div>
    
         <div>
@@ -43,7 +43,7 @@
                     <label for="gamename">Game name: </label>
                     <input type="text" class="form-control" name="gamename" id="gamename" placeholder="Enter Game Name" required/>
 
-                    <label for="rating">Difficulty (Easiest 1 - 10 Hardest): </label>
+                    <label for="gamename">Difficulty (Easiest 1 - 10 Hardest): </label>
                     <input type="number" class="form-control" name="rating" id="rating" placeholder="Enter Game Difficulty" min="1" max="10" required/>
 
                     <?php
@@ -67,7 +67,7 @@
             <?php
                 if (isset($_POST['sub'])) {
                 // collect value of input field
-                $gameid = uniqid();
+                $gameid = uniqid()
                 
                 global $db;
 

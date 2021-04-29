@@ -34,6 +34,9 @@
                 <ul>
                     <a href=""> Community Games</a>
                 </ul>
+                <ul>
+                    <a href="./profileEdit.php"> Edit Profile</a>
+                </ul>
             </li>
         </div>
 

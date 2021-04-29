@@ -31,32 +31,36 @@
         </div>
 
         <div class="col-md-4">
-            <h3>Make Game</h3>
-
-            <h3>Games require categories: create a category</h3>
-            <span style="float:right;"><button class="btn btn-primary"> <a href="./createCat.php"> Create a Category</a> </button></span>
+            <h3>Edit Profile</h3>
         </div>
    
         <div>
             <form action="" method="POST">
                 <fieldset>
-                    <label for="gamename">Game name: </label>
-                    <input type="text" class="form-control" name="gamename" id="gamename" placeholder="Enter Game Name" required/>
-
-                    <label for="rating">Difficulty (Easiest 1 - 10 Hardest): </label>
-                    <input type="number" class="form-control" name="rating" id="rating" placeholder="Enter Game Difficulty" min="1" max="10" required/>
-
                     <?php
                         global $db;
-                        $query = 'SELECT * FROM categories';
+                        $query = 'SELECT * FROM users WHERE user_id="'.$_SESSION['ID'].'"';
                         $statement = $db->prepare($query);
-
                         $statement->execute();
                         $results = $statement->fetchAll();
                         foreach ($results as $result) {
                             echo '<label>'.$result["cat_name"]."</label>";
                             echo '<input type="checkbox" name="checkboxes[]" value="'.$result["cat_id"].'"/>';
+
+                            echo '<label for="firstname">First Name: </label>';
+                            echo '<input type="text" class="form-control" name="firstname" id="firstname" value="'.$result['first_name'].'" required/>';
+
+                            echo '<label for="firstname">Last Name: </label>';
+                            echo '<input type="text" class="form-control" name="lastname" id="lastname" value="'.$result['last_name'].'" required/>';
+
+                            echo '<label for="firstname">User Name: </label>';
+                            echo '<input type="text" class="form-control" name="username" id="username" value="'.$_SESSION['Username'].'" required/>';
+
+                            echo '<label for="firstname">Email: </label>';
+                            echo '<input type="text" class="form-control" name="email" id="email" value="'.$_SESSION['Email'].'" required/>';
+
                         }
+    
                     ?>
                     
                     <input type="submit" name="sub" style="margin-bottom:5%; margin-top:5%" value="Create Game" class="btn btn-secondary"/>
@@ -67,30 +71,27 @@
             <?php
                 if (isset($_POST['sub'])) {
                 // collect value of input field
-                $gameid = uniqid();
-                
+
                 global $db;
 
-                //insert new game
-                $query = 'INSERT INTO games (game_id, game_name, game_rating, creator) VALUES ('.$gameid.', '.$_POST['gamename'].', '.$_SESSION['Username'].', '.(int)$_POST['rating'].')';
+                //update user table
+                $query = 'UPDATE users SET first_name="'.$_POST['firstname'].'" last_name="'.$_POST['lastname'].'" WHERE user_id="'.$_SESSION['ID'].'"';
                 $statement = $db->prepare($query);
 
                 $statement->execute();
                 
-                //insert selected categories
-                foreach($_POST['checkboxes'] as $checkbox) {
-                    $query = 'INSERT INTO game_contains (game_id, cat_id) VALUES ('.$gameid.', '.$checkbox.')';
-                    $statement = $db->prepare($query);
+                //update login table
 
-                    $statement->execute();
-                }
+                $query = 'UPDATE login SET Username="'.$_POST['username'].'" Email="'.$_POST['email'].'" WHERE user_id="'.$_SESSION['ID'].'"';
+                $statement = $db->prepare($query);
 
+                $statement->execute();
+                
+                $_SESSION['Username']=$_POST['username'];
+                $_SESSION['Email']=$_POST['email'];
             ?>
    
         </div>
-    
-    
-
 
         </table>
     </div>
