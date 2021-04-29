@@ -26,32 +26,44 @@
     </div>
 
     <div class=" games_menu d-flex">
-        <div class="my_community_games ">
+        <div class="my_community_games col-md-2">
             <li class="menu">
                 <ul>
-                    <a href="./mygames.php"> My Games </a>
+                    <a href="./mygames.php"><button class="btn btn-primary" >My Games</button></a>
                 </ul>
                 <ul>
-                    <a href="./allgames.php"> Community Games</a>
+                    <a href="./allgames.php"><button class="btn btn-primary" >Community Games</button> </a>
                 </ul>
                 <ul>
-                    <a href="./profileEdit.php"> Edit Profile</a>
+                    <a href="./profileEdit.php"> <button class="btn btn-primary" >Edit Profile</button></a>
                 </ul>
                 <ul>
-                    <a href="./creation.php">Create a Game</a>
+                    <a href="./creation.php"><button class="btn btn-primary" >Create a Game</button></a>
                 </ul>
                 <ul>
-                    <a href="./createCat.php">Create a Category</a>
+                    <a href="./createCat.php"><button class="btn btn-primary" >Create a Category</button></a>
                 </ul>
                 <ul>
-                    <a href="./createQuestion.php">Create a Question</a>
+                    <a href="./createQuestion.php"><button class="btn btn-primary" >Create a Question</button></a>
                 </ul>
             </li>
         </div>
 
+        <div>
+            <h3>Tutorial:</h1>
+            <br>
+            <p>Users can create their own games and save other peoples' games. </p>
+            <br>
+            <p>Games contain categories</p>
+            <br>
+            <p>Categories contain questions</p>
+            <br>
+            <p>Questions when answered correctly will award points based on worth</p>
+        </div>
 
-        
     </div>
+
+
     <br>
     <div class="creation">
         <span style="float:left;"><button class="btn btn-primary"> <a href="./logout.php" onclick="confirmLogOut()"> Log Out</a> </button></span>

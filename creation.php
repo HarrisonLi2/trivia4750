@@ -34,10 +34,10 @@
             <h3>Make Game</h3>
 
             <h3>Games require categories: create a category</h3>
-            <span style="float:right;"><button class="btn btn-primary"> <a href="./createCat.php"> Create a Category</a> </button></span>
+            <button class="btn btn-primary"> <a href="./createCat.php"> Create a Category</a> </button>
         </div>
    
-        <div>
+        <div class = "col-md-7">
             <form action="" method="POST">
                 <fieldset>
                     <label for="gamename">Game name: </label>
@@ -61,7 +61,7 @@
                         }
                     ?>
                     
-                    <input type="submit" name="sub" style="margin-bottom:5%; margin-top:5%" value="Create Game" class="btn btn-secondary"/>
+                    <input type="submit" name="sub" style="margin-bottom:5%; margin-top:5%" value="Create Game" class="btn btn-primary"/>
                 </fieldset>
 
             </form>

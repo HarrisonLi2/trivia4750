@@ -31,13 +31,13 @@
         </div>
 
         <div class="col-md-4">
-            <h3>Create a Question</h3>
-
             <h3>Once you have created some questions add questions to a category</h3>
-            <span style="float:right;"><button class="btn btn-primary"> <a href="./createCat.php"> Create a Category</a> </button></span>
+            <button class="btn btn-primary"> <a href="./createCat.php"> Create a Category</a> </button>
+
         </div>
    
         <div class="col-md-7">
+             <h3>Create a Question</h3>
             <form action="" method="POST">
                 <fieldset>
                     <label for="question">Question Input: </label>
@@ -52,7 +52,7 @@
                     <label for="worth">Question Worth (1-100): </label>
                     <input type="number" class="form-control" name="worth" id="worth" placeholder="Enter Question Worth" min="1" max="100" required/>
 
-                    <input type="submit" name="sub" style="margin-bottom:5%; margin-top:5%" value="Create Question" class="btn btn-secondary"/>
+                    <input type="submit" name="sub" style="margin-bottom:5%; margin-top:5%" value="Create Question" class="btn btn-primary"/>
                 </fieldset>
 
             </form>

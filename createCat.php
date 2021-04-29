@@ -31,18 +31,24 @@
         </div>
 
         <div class="col-md-4">
-            <h3>Create a Category</h3>
+           
 
-            <h3>Once you have created some categories return to create a game</h3>
-            <span style="float:right;"><button class="btn btn-primary"> <a href="./creation.php"> Return to Create a Game</a> </button></span>
+            <h3>Once you have created some categories go create a game</h3>
+            <button class="btn btn-primary"> <a href="./creation.php">Create a Game</a> </button>
+            <br>
+
+            <h5>Create More Questions</h5>
+            <button class="btn btn-primary"> <a href="./createQuestion.php"> Create a Question</a> </button>
         </div>
    
         <div class="col-md-7">
+             <h3>Create a Category</h3>
             <form action="" method="POST">
                 <fieldset>
                     <label for="catname">Category Name: </label>
                     <input type="text" class="form-control" name="catname" id="catname" placeholder="Enter Category Name" required/>
 
+                    <label for="checkboxes[]">Available Questions: </label>
                     <?php
                         global $db;
                         $query = 'SELECT * FROM questions';
@@ -50,17 +56,18 @@
 
                         $statement->execute();
                         $results = $statement->fetchAll();
+
                         if(empty($results)){
                             echo '<h3>No questions. Create some!</h3>';
                             echo '<button class="btn btn-primary"> <a href="./createQuestion.php">Create Question</a> </button>';
                         }
                         foreach ($results as $result) {
-                            echo '<label>'.$result["q_content"]."</label>";
+                            echo '<label>Question: '.$result["q_content"]."</label>";
                             echo '<input type="checkbox" name="checkboxes[]" value="'.$result["question_id"].'"/>';
                         }
                     ?>
                     
-                    <input type="submit" name="sub" style="margin-bottom:5%; margin-top:5%" value="Create Category" class="btn btn-secondary"/>
+                    <input type="submit" name="sub" style="margin-bottom:5%; margin-top:5%" value="Create Category" class="btn btn-primary"/>
                 </fieldset>
 
             </form>
