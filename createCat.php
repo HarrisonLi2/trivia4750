@@ -96,6 +96,8 @@
 
                         $statement->execute();
                     }
+
+                    echo "<script>alert('Category: ".$_POST['catname']." successfully created. Click ok to continue.');</script>";
               }
             ?>
 

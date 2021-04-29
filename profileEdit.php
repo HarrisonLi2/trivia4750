@@ -61,7 +61,7 @@
         
                         ?>
                         
-                        <input type="submit" name="sub" style="margin-bottom:5%; margin-top:5%" value="Update Profile" class="btn btn-secondary"/>
+                        <input type="submit" name="sub" style="margin-bottom:5%; margin-top:5%" value="Update Profile" class="btn btn-primary"/>
                     </fieldset>
 
                 </form>
@@ -95,6 +95,8 @@
                 $_COOKIE['username']=$_POST['username'];
                 $_SESSION['Username']=$_POST['username'];
                 $_SESSION['Email']=$_POST['email'];
+
+                echo "<script>alert('Profile successfully updated. Click ok to continue.');</script>";
             }
         ?>
 

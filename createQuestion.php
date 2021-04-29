@@ -80,7 +80,8 @@
                    $statement = $db->prepare($query);
 
                    $statement->execute();
-             
+                    
+                   echo "<script>alert('Question:".$_POST['question']." successfully created. Click ok to continue.');</script>";
               }
     ?>
 

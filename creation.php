@@ -99,6 +99,7 @@
 
                     $statement->execute();
 
+                    echo "<script>alert('Game: ".$_POST['gamename']." successfully created. Click ok to continue.');</script>";
                 }
     ?>
 
