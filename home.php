@@ -14,8 +14,6 @@
 </head>
 
 <body>
-
-
     <?php 
     require('check_login.php');
     require('connect-db.php');
@@ -50,6 +48,8 @@
         </div>
 
         <div>
+            <h1 class="h1-black">Welcome to Trivia4750!</h1>
+            <br>
             <h3>Tutorial:</h1>
             <br>
             <p>Users can create their own games and save other peoples' games. </p>

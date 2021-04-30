@@ -82,6 +82,9 @@ h1,
 h2 {
     color: white;
 }
+.h1-black{
+    color: black;
+}
 
 body {
     width: 100%;
@@ -92,6 +95,7 @@ p {
     color: black;
     font-family: Arial, Helvetica, sans-serif;
 }
+
 
 button.navigation {
     background-color: black;

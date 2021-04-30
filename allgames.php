@@ -4,19 +4,21 @@
 <link rel="stylesheet" href="./css/bootstrap.css" type="text/css" />
 <link rel="stylesheet" href="./css/style.css" type="text/css" />
 
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
 </head>
 <body>
         
-    <?php 
+   <?php 
         require('check_login.php');
         require('connect-db.php');
         session_start();
-    ?>
+    ?> 
 
     <div>
         <p> Logged in as <?php echo $_SESSION['Username'] ?> </p>
@@ -52,7 +54,7 @@
                         $results = $statement->fetchAll();
                         foreach ($results as $result) {
                             echo "<tr>";
-                            echo '<td><button class="btn btn-primary" onclick="sortTable(0)"> + </button></td>';
+                            echo '<td><button class="addbutton btn btn-primary" name="'.$result['game_id'].'" value="'.$result['game_id'].'"> + </button></td>';
                             echo "<td>" . $result["game_name"] . "</td>";
                             echo "<td>" . $result["game_rating"] . "</td>";
                             echo "<td>" . $result["creator"] . "</td>";
@@ -65,5 +67,8 @@
         </table>
     </div>
     
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="./js/addGame.js"></script>
 </body>
 </html>
