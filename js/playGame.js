@@ -1,11 +1,17 @@
+
 $(document).ready(function(){
-    $('.addbutton').click(function(){
+    
+    $('.playbutton').click(function(){
         var gameid = $(this).val();
-        var phpfile = 'insertgame.php',
+        var phpfile = 'playgame.php';
+        
+        
         data =  {'gameid': gameid};
+        
         $.post(phpfile, data, function (response) {
             // Response div goes here.
-            alert("Game added successfully. Play from MyGames Page.");
+            
         });
+        window.location.href= 'gamepage.php';
     });
 });

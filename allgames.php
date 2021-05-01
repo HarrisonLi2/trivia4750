@@ -33,6 +33,10 @@
     </div>
 
     <div>
+    <a href="./mygames.php"><button class="btn btn-primary" >Your Games</button></a>
+
+    <a href="./creation.php"><button class="btn btn-primary" >Create Game</button></a>
+
         <h1>All Games</h1>
         <table id="game_table" class="game_table">
                 <thead>
