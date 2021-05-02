@@ -31,10 +31,10 @@
         <table style="margin-top:20px"id="game_table" class="game_table">
             <thead>
                 <tr>
-                    <th> User </th>
-                    <th> <button class="btn" onclick="sortTable(0)"> Game Name </button> </th>
-                    <th> <button class="btn " onclick="sortTable(1)"> Score </button> </th>
-                    <th> <button class="btn" onclick="sortTable(2)"> Date </button> </th>
+                    <th><button class="btn" onclick="sortTable(0)"> User </button></th>
+                    <th> <button class="btn" onclick="sortTable(1)"> Game Name </button> </th>
+                    <th> <button class="btn "> Score </button> </th>
+                    <th> <button class="btn" onclick="sortTable(3)"> Date </button> </th>
                 </tr>
                 <?php
 
@@ -60,5 +60,7 @@
     </div>
 
 </body>
+<script src="./js/games.js"></script>
+
 
 </html>
