@@ -32,7 +32,7 @@
     </div>
 
     <div class="col-md-6">
-        <form action="" method="POST">
+        <form action="./resultsPage.php" method="POST">
             <?php
                 
                 if (isset($_SESSION['currentGame'])) {
@@ -74,31 +74,7 @@
 
     </div>
 
-    <?php
-                if (isset($_POST['sub'])) {
-                    // collect value of input field
-
-                    global $db;
-
-                    //insert new question
-                    $query = 'INSERT INTO questions (q_content, difficulty, worth) VALUES ("'.$_POST['question'].'", '. $_POST['rating'].', '.$_POST['worth'].')';
-             
-                    $statement = $db->prepare($query);
-
-                    $statement->execute();
-                
-                    $lastID = $db->lastInsertId();
-
-                   //register answer
-                   $query = 'INSERT INTO questions_answer (question_id, answer) VALUES ('.$lastID.', "'. $_POST['answer'].'")';
-        
-                   $statement = $db->prepare($query);
-
-                   $statement->execute();
-                    
-                   echo "<script>alert('Question:".$_POST['question']." successfully created. Click ok to continue.');</script>";
-              }
-    ?>
+  
 
 </body>
 </html>
