@@ -33,9 +33,6 @@
     </div>
 
     <div>
-    <a href="./mygames.php"><button class="btn btn-primary" >Your Games</button></a>
-
-    <a href="./creation.php"><button class="btn btn-primary" >Create Game</button></a>
 
         <h1>Trivia 4750 Leaderboard</h1>
         <table id="game_table" class="game_table">
@@ -50,7 +47,7 @@
                     <?php
 
                         global $db;
-                        $query = 'SELECT Username, game_name, score, play_date FROM login NATURAL JOIN leaderboard NATURAL JOIN games';
+                        $query = 'SELECT Username, game_name, score, play_date FROM login NATURAL JOIN leaderboard NATURAL JOIN games ORDER BY score DESC';
                 
                         $statement = $db->prepare($query);
 
@@ -62,7 +59,6 @@
                             echo "<td>" . $result["game_name"] . "</td>";
                             echo "<td>" . $result["score"] . "</td>";
                             echo "<td>" . $result["play_date"] . "</td>";
-                            
                             echo "</tr>";
                         }
                     ?>
@@ -70,9 +66,6 @@
 
         </table>
     </div>
-    
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="./js/addGame.js"></script>
+ 
 </body>
 </html>
