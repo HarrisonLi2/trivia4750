@@ -62,7 +62,7 @@
                         echo '<h3>Your Answer: '.$_POST[strval($QA['question_id'])].'</h3>';
                         echo '<h3>Correct Answer:'.$QA['answer'].'</h3>';
                         
-                        if(strcasecmp($_POST[strval($QA['question_id'])], $QA['answer'])==0){
+                        if(strcasecmp(trim ($_POST[strval($QA['question_id'])] , " \n\r\t\v\0" ), trim ($QA['answer'], " \n\r\t\v\0" ))==0){
                             $score = $score + $QA['worth'];
                         } else {
 							$wrongpts = $wrongpts + $QA['worth'];
