@@ -43,7 +43,6 @@
             }
         }
     ?>
-
     <div>
  
         <a href="./allgames.php"><button class="btn btn-primary" >Browse Games</button></a>

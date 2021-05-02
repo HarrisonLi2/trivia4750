@@ -567,3 +567,7 @@ textarea.clue::placeholder {
 .hvrbox.active .hvrbox-text_mobile {
     display: block;
 }
+
+.exportbtn {
+    width: 60%;
+}
