@@ -10,38 +10,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-        
-    <?php 
-        require('check_login.php');
-        require('connect-db.php');
-        session_start();
-    ?>
-
-    <div>
-        <p> Logged in as <?php echo $_SESSION['Username'] ?> </p>
-
-    </div>
-    <div class="">
-            <li class="menu">
-                <ul>
-                     <a href="./home.php"><button class="btn btn-primary" >Back to Home</button></a>
-                </ul>
- 
-            </li>
-    </div>
 
     <?php
-        if($_SERVER['REQUEST_METHOD']=='POST')
-        {
-            if(isset($_POST['delete_game']))
-            {
-                $query = "DELETE FROM games WHERE game_id=:id";
-                $statement = $db->prepare($query);
-                $statement->bindValue(':id', $_POST['delete_game']);
-                $statement->execute();
-            }
+    require('check_login.php');
+    require('connect-db.php');
+    session_start();
+    ?>
+
+
+
+    <?php
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if (isset($_POST['delete_game'])) {
+            $query = "DELETE FROM games WHERE game_id=:id";
+            $statement = $db->prepare($query);
+            $statement->bindValue(':id', $_POST['delete_game']);
+            $statement->execute();
         }
+    }
     ?>
     <div>
  
@@ -79,29 +67,11 @@
                             echo "<td>" . $result["creator"] . "</td>";
                             echo '<td><button class="removebutton btn btn-danger" name="'.$result['game_id'].'" value="'.$result['game_id'].'"> Remove </button></td>';
                             
-                            if($result['creator']==$_SESSION['Username']){
-                                echo '<td>
-                                        <form action="" method="POST">
-                                        <input type="text" hidden name="delete_game" id="delete_game" value="'.$result['game_id'].'">
-                                        <input type="submit" class="removebutton btn btn-danger" id="'.$result['game_id'].'" value="Delete"> 
-                                        </form>
-                                      </td>';
-                            }
-                            else
-                            {
-                                echo '<td> Not Your Game! </td>';
-                            }
-                            
-                            echo "</tr>";
-                        }
-                       
-                    ?>
-                </thead>
-        </table>
-    </div>
+                           
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="./js/playGame.js"></script>
     <script src="./js/removeGame.js"></script>
 </body>
+
 </html>

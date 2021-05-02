@@ -55,6 +55,7 @@
 
                     $score = 0;
                     $totpts = 0;
+					$wrongpts = 0;
 
                     foreach($QAS as $QA){
                         echo '<h3>Question: '.$QA['q_content'].' ('.$QA['worth'].' points)</h3>';
@@ -63,7 +64,9 @@
                         
                         if(strcasecmp($_POST[strval($QA['question_id'])], $QA['answer'])==0){
                             $score = $score + $QA['worth'];
-                        }
+                        } else {
+							$wrongpts = $wrongpts + $QA['worth'];
+						}
                         $totpts = $totpts + $QA['worth'];
                     }
 
@@ -79,7 +82,9 @@
                     $statement->bindValue(':score', $percent);
                     $statement->execute();
 
-
+					$query = 'UPDATE users SET points = points + '.$score.' - '.$wrongpts. ' WHERE user_id = ' .$_SESSION['ID'];
+					$statement = $db->prepare($query);
+					$statement->execute();
                     
 
                    echo '<h3>Your Score: '.$score.'/'.$totpts.' ('.$percent.'%) Thanks for playing!</h3>';

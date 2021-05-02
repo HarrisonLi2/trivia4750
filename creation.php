@@ -15,22 +15,14 @@
         require('connect-db.php');
         session_start();
      ?>
-    <div>
-        <p> Logged in as <?php echo $_SESSION['Username'] ?> </p>
-    </div>
 
 
-    <div class=" games_menu d-flex">
-        <div class="my_community_games ">
-            <li class="menu">
-                <ul>
-                    <a href="./home.php"><button class="btn btn-primary" >Back to Home</button></a>
-                </ul>
-           
-            </li>
-        </div>
+    <?php 
+        include("header.php");
+    ?>
+    <div style="margin-top:10px;" class=" games_menu d-flex">
 
-        <div class="col-md-4">
+        <div  class="col-md-4">
             <h3>Make Game</h3>
 
             <h3>Games require categories: create a category</h3>
