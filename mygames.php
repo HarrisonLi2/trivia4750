@@ -31,6 +31,19 @@
             </li>
     </div>
 
+    <?php
+        if($_SERVER['REQUEST_METHOD']=='POST')
+        {
+            if(isset($_POST['delete_game']))
+            {
+                $query = "DELETE FROM games WHERE game_id=:id";
+                $statement = $db->prepare($query);
+                $statement->bindValue(':id', $_POST['delete_game']);
+                $statement->execute();
+            }
+        }
+    ?>
+
     <div>
  
         <a href="./allgames.php"><button class="btn btn-primary" >Browse Games</button></a>
@@ -42,18 +55,17 @@
                 <thead>
                     <tr>
                         <th> Play? </th>
-                        <th> <button class="btn btn-primary" onclick="sortTable(0)"> Game Name: </button> </th>
-                        <th> <button class="btn btn-primary" onclick="sortTable(1)"> Game Difficulty: </button> </th>
-                        <th> <button class="btn btn-primary" onclick="sortTable(2)"> Created By: </button> </th>
+                        <th> <button class="btn btn-primary" onclick="sortTable(1)"> Game Name: </button> </th>
+                        <th> <button class="btn btn-primary" onclick="sortTable(2)"> Game Difficulty: </button> </th>
+                        <th> <button class="btn btn-primary" onclick="sortTable(3)"> Created By: </button> </th>
                         <th> Remove? </th>
+                        <th> Delete Permanently </th>
                     </tr>
                     <?php
 
                         global $db;
                         $query = 'SELECT * FROM games WHERE game_id IN (SELECT game_id FROM has_game WHERE user_id='.$_SESSION['ID'].')';
-                
                         $statement = $db->prepare($query);
-
                         $statement->execute();
                         $results = $statement->fetchAll();
                         if(empty($results)){
@@ -66,6 +78,20 @@
                             echo "<td>" . $result["game_rating"] . "</td>";
                             echo "<td>" . $result["creator"] . "</td>";
                             echo '<td><button class="removebutton btn btn-danger" name="'.$result['game_id'].'" value="'.$result['game_id'].'"> Remove </button></td>';
+                            
+                            if($result['creator']==$_SESSION['Username']){
+                                echo '<td>
+                                        <form action="" method="POST">
+                                        <input type="text" hidden name="delete_game" id="delete_game" value="'.$result['game_id'].'">
+                                        <input type="submit" class="removebutton btn btn-danger" id="'.$result['game_id'].'" value="Delete"> 
+                                        </form>
+                                      </td>';
+                            }
+                            else
+                            {
+                                echo '<td> Not Your Game! </td>';
+                            }
+                            
                             echo "</tr>";
                         }
                        
