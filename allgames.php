@@ -2,12 +2,14 @@
 <html lang="en">
 <link rel="stylesheet" href="./css/bootstrap.css" type="text/css" />
 <link rel="stylesheet" href="./css/style.css" type="text/css" />
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <?php
     require('check_login.php');
@@ -15,14 +17,14 @@
     session_start();
     ?>
 
-   
+
     <div>
         <h1>All Games</h1>
-        <?php 
+        <?php
         include("header.php");
         ?>
 
-        <table style="margin-top:20px;"id="game_table" class="game_table">
+        <table style="margin-top:20px;" id="game_table" class="game_table">
             <thead>
                 <tr>
                     <th style="width:10%;"> Add To My Games! </th>
@@ -40,7 +42,7 @@
                 $results = $statement->fetchAll();
                 foreach ($results as $result) {
                     echo "<tr>";
-                    echo '<td><button class="addbutton btn " name="' . $result['game_id'] . '" value="' . $result['game_id'] . '"> + </button></td>';
+                    echo '<td><button style="text-decoration: none;" class="addbutton btn-light " name="' . $result['game_id'] . '" value="' . $result['game_id'] . '"> + </button></td>';
                     echo "<td>" . $result["game_name"] . "</td>";
                     echo "<td>" . $result["game_rating"] . "</td>";
                     echo "<td>" . $result["creator"] . "</td>";
