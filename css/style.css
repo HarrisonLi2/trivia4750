@@ -621,3 +621,7 @@ th {
 button {
     text-decoration: underline;
 }
+
+[type="checkbox"] {
+    vertical-align: middle;
+}

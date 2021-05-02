@@ -25,7 +25,7 @@
         <div  class="col-md-4">
             <h3>Make Game</h3>
 
-            <h3>Games require categories: create a category</h3>
+            <h3 style="color:black">Games require categories: create a category</h3>
             <button style="color:black;"class="btn btn-light"> <a href="./createCat.php"> Create a Category</a> </button>
         </div>
    
@@ -38,7 +38,7 @@
                     <label for="rating">Difficulty (Easiest 0 - 9 Hardest): </label>
                     <input type="number" class="form-control" name="rating" id="rating" placeholder="Enter Game Difficulty" min="0" max="9" required/>
 
-                    <label for="checkboxes[]"> Select Categories: </label>
+                    <label> Select Categories: </label>
 
                     <?php
                         global $db;
@@ -48,8 +48,11 @@
                         $statement->execute();
                         $results = $statement->fetchAll();
                         foreach ($results as $result) {
-                            echo '<label>'.$result["cat_name"]."</label>";
-                            echo '<input type="checkbox" name="checkboxes[]" value="'.$result["cat_id"].'"/>';
+                            echo '<span>';
+                                echo '<label>'.$result["cat_name"]."</label>";
+                                echo '<input type="checkbox" name="checkboxes[]" value="'.$result["cat_id"].'"/>';
+                            echo '</span>';
+
                         }
                     ?>
                     
