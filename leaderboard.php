@@ -12,60 +12,53 @@
     <title>Document</title>
 
 </head>
+
 <body>
-        
-   <?php 
-        require('check_login.php');
-        require('connect-db.php');
-        session_start();
-    ?> 
 
-    <div>
-        <p> Logged in as <?php echo $_SESSION['Username'] ?> </p>
+    <?php
+    require('check_login.php');
+    require('connect-db.php');
+    session_start();
+    ?>
 
-    </div>
-    <div class="">
-            <li class="menu">
-                <ul>
-                     <a href="./home.php"><button class="btn btn-primary" >Back to Home</button></a>
-                </ul>
-            </li>
-    </div>
 
     <div>
 
         <h1>Trivia 4750 Leaderboard</h1>
-        <table id="game_table" class="game_table">
-                <thead>
-                    <tr>
-                        <th> User </th>
-                        <th> <button class="btn btn-primary" onclick="sortTable(0)"> Game Name </button> </th>
-                        <th> <button class="btn btn-primary" onclick="sortTable(1)"> Score </button> </th>
-                        <th> <button class="btn btn-primary" onclick="sortTable(2)"> Date </button> </th>
-                        
-                    </tr>
-                    <?php
+        <?php
+        include("header.php");
+        ?>
+        <table style="margin-top:20px"id="game_table" class="game_table">
+            <thead>
+                <tr>
+                    <th> User </th>
+                    <th> <button class="btn" onclick="sortTable(0)"> Game Name </button> </th>
+                    <th> <button class="btn " onclick="sortTable(1)"> Score </button> </th>
+                    <th> <button class="btn" onclick="sortTable(2)"> Date </button> </th>
+                </tr>
+                <?php
 
-                        global $db;
-                        $query = 'SELECT Username, game_name, score, play_date FROM login NATURAL JOIN leaderboard NATURAL JOIN games ORDER BY score DESC';
-                
-                        $statement = $db->prepare($query);
+                global $db;
+                $query = 'SELECT Username, game_name, score, play_date FROM login NATURAL JOIN leaderboard NATURAL JOIN games ORDER BY score DESC';
 
-                        $statement->execute();
-                        $results = $statement->fetchAll();
-                        foreach ($results as $result) {
-                            echo "<tr>";
-                            echo '<td>'.$result['Username'].'</td>';
-                            echo "<td>" . $result["game_name"] . "</td>";
-                            echo "<td>" . $result["score"] . "</td>";
-                            echo "<td>" . $result["play_date"] . "</td>";
-                            echo "</tr>";
-                        }
-                    ?>
-                </thead>
+                $statement = $db->prepare($query);
+
+                $statement->execute();
+                $results = $statement->fetchAll();
+                foreach ($results as $result) {
+                    echo "<tr>";
+                    echo '<td>' . $result['Username'] . '</td>';
+                    echo "<td>" . $result["game_name"] . "</td>";
+                    echo "<td>" . $result["score"] . "</td>";
+                    echo "<td>" . $result["play_date"] . "</td>";
+                    echo "</tr>";
+                }
+                ?>
+            </thead>
 
         </table>
     </div>
- 
+
 </body>
+
 </html>

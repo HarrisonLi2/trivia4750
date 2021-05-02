@@ -20,13 +20,13 @@
     <?php 
         include("header.php");
     ?>
-    <div style="margin-top:10px;" class=" games_menu d-flex">
+    <div style="margin-top:20px;" class=" games_menu d-flex">
 
         <div  class="col-md-4">
             <h3>Make Game</h3>
 
             <h3>Games require categories: create a category</h3>
-            <button class="btn btn-primary"> <a href="./createCat.php"> Create a Category</a> </button>
+            <button style="color:black;"class="btn btn-light"> <a href="./createCat.php"> Create a Category</a> </button>
         </div>
    
         <div class = "col-md-7">
@@ -53,7 +53,7 @@
                         }
                     ?>
                     
-                    <input type="submit" name="sub" style="margin-bottom:5%; margin-top:5%" value="Create Game" class="btn btn-primary"/>
+                    <input type="submit" name="sub" style="margin-bottom:5%; margin-top:5%; text-decoration: underline;" value="Create Game" class="btn btn-light"/>
                 </fieldset>
 
             </form>

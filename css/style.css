@@ -430,7 +430,7 @@ tr th {
 }
 
 button a {
-    color: white;
+    color: black;
 }
 
 .game_creator {
@@ -574,25 +574,25 @@ textarea.clue::placeholder {
     width: 60%;
 }
 
-li.nav {
-    display: inline;
-    color: black;
-    width: 100%;
-}
-
 ul.horizontal {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
+    background-color: white;
 }
 
-li.nav ul {
+ul.horizontal li {
     display: inline;
     outline: black;
+    color: black;
 }
 
-ul.right {
+li.right {
+    float: right;
+}
+
+li.right-name {
     float: right;
 }
 
@@ -613,4 +613,8 @@ td {
 
 th {
     text-align: center;
+}
+
+button {
+    text-decoration: underline;
 }

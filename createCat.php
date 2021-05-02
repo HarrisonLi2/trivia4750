@@ -15,34 +15,26 @@
         require('connect-db.php');
         session_start();
      ?>
-    <div>
-        <p> Logged in as <?php echo $_SESSION['Username'] ?> </p>
-    </div>
 
-
+<h1 class="center">Create a Category</h1>
+        <?php
+        include("header.php");
+        ?>
     <div class=" games_menu d-flex">
-        <div class="my_community_games ">
-            <li class="menu">
-                <ul>
-                      <a href="./home.php"><button class="btn btn-primary" >Back to Home</button></a>
-                </ul>
-           
-            </li>
-        </div>
 
         <div class="col-md-4">
            
 
             <h3>Once you have created some categories go create a game</h3>
-            <button class="btn btn-primary"> <a href="./creation.php">Create a Game</a> </button>
+            <button class="btn "> <a href="./creation.php">Create a Game</a> </button>
             <br>
 
             <h5>Create More Questions</h5>
-            <button class="btn btn-primary"> <a href="./createQuestion.php"> Create a Question</a> </button>
+            <button class="btn "> <a href="./createQuestion.php"> Create a Question</a> </button>
         </div>
    
         <div class="col-md-7">
-             <h3>Create a Category</h3>
+
             <form action="" method="POST">
                 <fieldset>
                     <label for="catname">Category Name: </label>
@@ -66,8 +58,7 @@
                             echo '<input type="checkbox" name="checkboxes[]" value="'.$result["question_id"].'"/>';
                         }
                     ?>
-                    
-                    <input type="submit" name="sub" style="margin-bottom:5%; margin-top:5%" value="Create Category" class="btn btn-primary"/>
+                    <input type="submit" name="sub" style="margin-bottom:5%; margin-top:5%" value="Create Category" class="btn"/>
                 </fieldset>
 
             </form>
