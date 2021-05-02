@@ -47,7 +47,7 @@
                     global $db;
 
                     $query = 'SELECT question_id, q_content, answer, worth FROM questions NATURAL JOIN game_contains NATURAL JOIN category_contains NATURAL JOIN questions_answer WHERE game_id='.$_SESSION['currentGame'].'';
-    
+                    
                     $statement = $db->prepare($query);
     
                     $statement->execute();
@@ -66,7 +66,19 @@
                         }
                         $totpts = $totpts + $QA['worth'];
                     }
+
                     $percent = round($score / $totpts * 100, 2);
+
+                    //add game to leaderboard
+
+                    $query = 'INSERT INTO leaderboard (user_id, game_id, score) VALUES ('.$_SESSION['ID'].', '.$_SESSION['currentGame'].', '.$percent.')';
+    
+                    $statement = $db->prepare($query);
+    
+                    $statement->execute();
+
+
+                    
 
                    echo '<h3>Your Score: '.$score.'/'.$totpts.' ('.$percent.'%) Thanks for playing!</h3>';
               }

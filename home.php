@@ -33,6 +33,9 @@
                     <a href="./allgames.php"><button class="btn btn-primary" >Browse Games</button> </a>
                 </ul>
                 <ul>
+                    <a href="./leaderboard.php"><button class="btn btn-primary" >Leaderboard</button> </a>
+                </ul>
+                <ul>
                     <a href="./profileEdit.php"> <button class="btn btn-primary" >Edit Profile</button></a>
                 </ul>
                 <ul>
