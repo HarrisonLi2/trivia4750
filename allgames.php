@@ -42,13 +42,11 @@
                 <thead>
                     <tr>
                         <th> - </th>
-                        <th> <button class="btn btn-primary" onclick="sortTable(0)"> Game Name: </button> </th>
-                        <th> <button class="btn btn-primary" onclick="sortTable(1)"> Game Difficulty: </button> </th>
-                        <th> <button class="btn btn-primary" onclick="sortTable(2)"> Created By: </button> </th>
-                        
+                        <th> <button class="btn btn-primary" onclick="sortTable(1)"> Game Name: </button> </th>
+                        <th> <button class="btn btn-primary" onclick="sortTable(2)"> Game Difficulty: </button> </th>
+                        <th> <button class="btn btn-primary" onclick="sortTable(3)"> Created By: </button> </th>          
                     </tr>
                     <?php
-
                         global $db;
                         $query = 'SELECT * FROM games';
                 
@@ -74,5 +72,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="./js/addGame.js"></script>
+    <script src="./js/games.js"></script>
+
 </body>
 </html>
