@@ -403,7 +403,7 @@ tr th {
     color: black;
 }
 
-li.menu {
+.menu {
     list-style: none;
     background-color: white;
 }
@@ -415,10 +415,12 @@ li.menu {
 }
 
 .games_menu {
-    height: 50vw;
     background-color: white;
-    margin-left: 5%;
-    margin-right: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    max-width: 1500px;
+    height: 50%;
 }
 
 .creation {
@@ -570,4 +572,45 @@ textarea.clue::placeholder {
 
 .exportbtn {
     width: 60%;
+}
+
+li.nav {
+    display: inline;
+    color: black;
+    width: 100%;
+}
+
+ul.horizontal {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+li.nav ul {
+    display: inline;
+    outline: black;
+}
+
+ul.right {
+    float: right;
+}
+
+.nav-btn {
+    border: 2px rgb(31, 44, 59);
+}
+
+.addbutton {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+td {
+    justify-content: center;
+    text-align: center;
+}
+
+th {
+    text-align: center;
 }

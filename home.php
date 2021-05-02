@@ -19,39 +19,37 @@
     require('connect-db.php');
     session_start();
      ?>
-    <div>
-        <p> Logged in as <?php echo $_SESSION['Username'] ?> </p>
-    </div>
 
-    <div class=" games_menu d-flex">
+
+    <div  class="games_menu center d-flex">
         <div class="my_community_games col-md-2">
             <li class="menu">
                 <ul>
-                    <a href="./mygames.php"><button class="btn btn-primary" >My Games</button></a>
+                    <a href="./mygames.php"><button class="btn nav-btn " >My Games</button></a>
                 </ul>
                 <ul>
-                    <a href="./allgames.php"><button class="btn btn-primary" >Browse Games</button> </a>
+                    <a href="./allgames.php"><button class="btn nav-btn " >Browse Games</button> </a>
                 </ul>
                 <ul>
-                    <a href="./leaderboard.php"><button class="btn btn-primary" >Leaderboard</button> </a>
+                    <a href="./leaderboard.php"><button class="btn nav-btn " >Leaderboard</button> </a>
                 </ul>
                 <ul>
-                    <a href="./profileEdit.php"> <button class="btn btn-primary" >Edit Profile</button></a>
+                    <a href="./profileEdit.php"> <button class="btn nav-btn " >Edit Profile</button></a>
                 </ul>
                 <ul>
-                    <a href="./creation.php"><button class="btn btn-primary" >Create a Game</button></a>
+                    <a href="./creation.php"><button class="btn  nav-btn" >Create a Game</button></a>
                 </ul>
                 <ul>
-                    <a href="./createCat.php"><button class="btn btn-primary" >Create a Category</button></a>
+                    <a href="./createCat.php"><button class="btn  " >Create a Category</button></a>
                 </ul>
                 <ul>
-                    <a href="./createQuestion.php"><button class="btn btn-primary" >Create a Question</button></a>
+                    <a href="./createQuestion.php"><button class="btn  " >Create a Question</button></a>
                 </ul>
             </li>
         </div>
 
-        <div>
-            <h1 class="h1-black">Welcome to Trivia4750!</h1>
+        <div class="col-md-10">
+            <h1 class="h1-black center">Welcome to Trivia4750!</h1>
             <br>
             <h3>Tutorial:</h1>
             <br>
@@ -70,11 +68,9 @@
 
 
     <br>
-    <div class="creation">
-        <span style="float:left;"><button class="btn btn-primary"> <a href="./logout.php" onclick="confirmLogOut()"> Log Out</a> </button></span>
-        <span style="float:right;"><button class="btn btn-primary"> <a href="./creation.php"> Create Your Own Game!</a> </button></span>
 
-    </div>
+        <span style="float:left;"><button class="btn "> <a href="./logout.php" onclick="confirmLogOut()"> Log Out</a> </button></span>
+
 
     <script src="js/games.js"> </script>
 
