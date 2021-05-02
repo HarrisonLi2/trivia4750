@@ -20,8 +20,6 @@
     session_start();
     ?>
 
-
-
     <?php
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (isset($_POST['delete_game'])) {
@@ -61,17 +59,17 @@
                 else{
                     echo 
                     '<tr>
-                    <th> Play? </th>
-                    <th> <button class="btn btn-primary" onclick="sortTable(1)"> Game Name: </button> </th>
-                    <th> <button class="btn btn-primary" onclick="sortTable(2)"> Game Difficulty: </button> </th>
-                    <th> <button class="btn btn-primary" onclick="sortTable(3)"> Created By: </button> </th>
+                    <th>  </th>
+                    <th> <button class="btn " onclick="sortTable(1)"> Game Name: </button> </th>
+                    <th> <button class="btn " onclick="sortTable(2)"> Game Difficulty: </button> </th>
+                    <th> <button class="btn " onclick="sortTable(3)"> Created By: </button> </th>
                     <th> Remove? </th>
                     <th> Delete Permanently </th>
                 </tr>';
                 }
                 foreach ($results as $result) {
                     echo "<tr>";
-                    echo '<td><button class="playbutton btn btn-primary" name="' . $result['game_id'] . '" value="' . $result['game_id'] . '"> Play </button></td>';
+                    echo '<td><button class="playbutton btn btn-light" name="' . $result['game_id'] . '" value="' . $result['game_id'] . '"> Play </button></td>';
                     echo "<td>" . $result["game_name"] . "</td>";
                     echo "<td>" . $result["game_rating"] . "</td>";
                     echo "<td>" . $result["creator"] . "</td>";

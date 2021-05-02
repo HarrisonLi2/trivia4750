@@ -10,73 +10,77 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-        
-    <?php 
-        require('check_login.php');
-        require('connect-db.php');
-        session_start();
+
+    <?php
+    require('check_login.php');
+    require('connect-db.php');
+    session_start();
     ?>
 
-    <div>
-        <p> Logged in as <?php echo $_SESSION['Username'] ?> </p>
+    <?php
+    if (isset($_SESSION['currentGame'])) {
+        global $db;
 
-    </div>
-    <div class="">
-        <li class="menu">
-            <ul>
-                    <a href="./home.php"><button class="btn btn-primary" >Back to Home</button></a>
-            </ul>
-        
-        </li>
-    </div>
+        $query = 'SELECT * FROM games WHERE game_id=:gameid';
 
-    <div class="col-md-6">
+        $statement = $db->prepare($query);
+        $statement->bindValue(':gameid', $_SESSION['currentGame']);
+
+        $statement->execute();
+        $games = $statement->fetchAll();
+        $game = $games[0];
+    }
+
+    ?>
+    
+
+    <h1 class="center"> <?php global $game; echo "Playing:".$game['game_name'] ?> </h1>
+    <h4 class="center"> <?php global $game; echo "By: ". $game['creator'] ?> </h1>
+    <h4 class="center"> <?php global $game; echo "Rating: ". $game['game_rating']?> </h1>
+
+    <?php
+
+    
+    include("header.php");
+    ?>
+
+
+    <div style="width:600px; margin-left:auto;margin-right:auto"class="col-md-12">
         <form action="./resultsPage.php" method="POST">
             <?php
-                
-                if (isset($_SESSION['currentGame'])) {
-                    global $db;
-                    
-                    $query = 'SELECT * FROM games WHERE game_id=:gameid';
-                        
-                    $statement = $db->prepare($query);
-                    $statement->bindValue(':gameid', $_SESSION['currentGame']);
 
-                    $statement->execute();
-                    $games = $statement->fetchAll();
-                    $game = $games[0];
-              
-                        echo '<h1>Playing: '.$game['game_name'].' Creator: '.$game['creator'].' Difficulty: '.$game['game_rating'].'<h1>';
+            if (isset($_SESSION['currentGame'])) {
 
-                        echo '<input type="submit" name="sub" style="margin-bottom:5%; margin-top:5%" value="Submit Game" class="btn btn-primary"/>';
+                echo '<input type="submit" name="sub" style="margin-bottom:5%; margin-top:5%" value="Submit Game" class="btn btn-light"/>';
 
-                        $query = 'SELECT * FROM questions NATURAL JOIN game_contains NATURAL JOIN category_contains WHERE game_id=:gameid';
-    
-                        $statement2 = $db->prepare($query);
-                        $statement2->bindValue(':gameid', $_SESSION['currentGame']);
-        
-                        $statement2->execute();
-                        $questions = $statement2->fetchAll();
+                $query = 'SELECT * FROM questions NATURAL JOIN game_contains NATURAL JOIN category_contains WHERE game_id=:gameid';
 
-                        $count = 1;
+                $statement2 = $db->prepare($query);
+                $statement2->bindValue(':gameid', $_SESSION['currentGame']);
 
-                        foreach($questions as $question){
-                            echo '<h3>Question #'.$count.'</h3>';
-                            echo '<h3>'.$question['q_content'].'</h3>';
-                            echo '<textarea class="" rows="5" name="'.$question['question_id'].'"  placeholder="Your Answer"></textarea>';
-                            $count = $count + 1;
-                        }
+                $statement2->execute();
+                $questions = $statement2->fetchAll();
 
-                        echo '<input type="submit" name="sub" style="margin-bottom:5%; margin-top:5%" value="Submit Game" class="btn btn-primary"/>';
-                    
+                $count = 1;
+
+                foreach ($questions as $question) {
+                    echo '<h3 class="center">Question #' . $count . '</h3>';
+                    echo '<h3 class="center">' . $question['q_content'] . '</h3>';
+                    echo '<input style="font-size:3em;"class="" rows="5" name="' . $question['question_id'] . '"  placeholder="Your Answer">';
+                    $count = $count + 1;
                 }
+
+                echo '<input type="submit" name="sub" style="margin-bottom:5%; margin-top:5%" value="Submit Game" class="btn btn-light"/>';
+            }
             ?>
         </form>
 
     </div>
 
-  
+
 
 </body>
+
 </html>
