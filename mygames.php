@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,42 +33,69 @@
     }
     ?>
     <div>
- 
-        <a href="./allgames.php"><button class="btn btn-primary" >Browse Games</button></a>
 
-        <a href="./creation.php"><button class="btn btn-primary" >Create Game</button></a>
-            
-        <h1>Your Games</h1>
-        <table id="game_table" class="game_table">
-                <thead>
-                    <tr>
-                        <th> Play? </th>
-                        <th> <button class="btn btn-primary" onclick="sortTable(1)"> Game Name: </button> </th>
-                        <th> <button class="btn btn-primary" onclick="sortTable(2)"> Game Difficulty: </button> </th>
-                        <th> <button class="btn btn-primary" onclick="sortTable(3)"> Created By: </button> </th>
-                        <th> Remove? </th>
-                        <th> Delete Permanently </th>
-                    </tr>
-                    <?php
 
-                        global $db;
-                        $query = 'SELECT * FROM games WHERE game_id IN (SELECT game_id FROM has_game WHERE user_id=:userid)';
-                        $statement = $db->prepare($query);
-                        $statement->bindValue(':userid', $_SESSION['ID']);
-                        $statement->execute();
-                        $results = $statement->fetchAll();
-                        if(empty($results)){
-                            echo "<h3>No games found. Add or Create a Game!</h3>";
-                        }
-                        foreach ($results as $result) {
-                            echo "<tr>";
-                            echo '<td><button class="playbutton btn btn-primary" name="'.$result['game_id'].'" value="'.$result['game_id'].'"> Play </button></td>';
-                            echo "<td>" . $result["game_name"] . "</td>";
-                            echo "<td>" . $result["game_rating"] . "</td>";
-                            echo "<td>" . $result["creator"] . "</td>";
-                            echo '<td><button class="removebutton btn btn-danger" name="'.$result['game_id'].'" value="'.$result['game_id'].'"> Remove </button></td>';
-                            
-                           
+        <h1 class="center">Your Games</h1>
+
+        <?php
+        include("header.php");
+        ?>
+        <div style="margin-top:20px" class="games_menu">
+            <table id="game_table" class="game_table">
+            <thead>
+
+                
+                
+                <?php
+
+                global $db;
+                $query = 'SELECT * FROM games WHERE game_id IN (SELECT game_id FROM has_game WHERE user_id=:userid)';
+                $statement = $db->prepare($query);
+                $statement->bindValue(':userid', $_SESSION['ID']);
+
+                $statement->execute();
+                $results = $statement->fetchAll();
+                if (empty($results)) {
+                    echo "<h3 class='center' style='color:black'>No games found. Add or Create a Game!</h3>";
+                }
+                else{
+                    echo 
+                    '<tr>
+                    <th> Play? </th>
+                    <th> <button class="btn btn-primary" onclick="sortTable(1)"> Game Name: </button> </th>
+                    <th> <button class="btn btn-primary" onclick="sortTable(2)"> Game Difficulty: </button> </th>
+                    <th> <button class="btn btn-primary" onclick="sortTable(3)"> Created By: </button> </th>
+                    <th> Remove? </th>
+                    <th> Delete Permanently </th>
+                </tr>';
+                }
+                foreach ($results as $result) {
+                    echo "<tr>";
+                    echo '<td><button class="playbutton btn btn-primary" name="' . $result['game_id'] . '" value="' . $result['game_id'] . '"> Play </button></td>';
+                    echo "<td>" . $result["game_name"] . "</td>";
+                    echo "<td>" . $result["game_rating"] . "</td>";
+                    echo "<td>" . $result["creator"] . "</td>";
+                    echo '<td><button class="removebutton btn btn-danger" name="' . $result['game_id'] . '" value="' . $result['game_id'] . '"> Remove </button></td>';
+
+                    if ($result['creator'] == $_SESSION['Username']) {
+                        echo '<td>
+                                        <form action="" method="POST">
+                                        <input type="text" hidden name="delete_game" id="delete_game" value="' . $result['game_id'] . '">
+                                        <input type="submit" class="removebutton btn btn-danger" id="' . $result['game_id'] . '" value="Delete"> 
+                                        </form>
+                                      </td>';
+                    } else {
+                        echo '<td> Not Your Game! </td>';
+                    }
+
+                    echo "</tr>";
+                }
+
+                ?>
+            </thead>
+        </table>
+        </div>
+    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="./js/playGame.js"></script>
