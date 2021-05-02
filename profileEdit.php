@@ -39,8 +39,9 @@
                     <fieldset>
                         <?php
                             global $db;
-                            $query = 'SELECT * FROM users WHERE user_id="'.$_SESSION['ID'].'"';
+                            $query = 'SELECT * FROM users WHERE user_id=:userid';
                             $statement = $db->prepare($query);
+                            $statement->bindValue(':userid', $_SESSION['ID']);
                             $statement->execute();
                             $results = $statement->fetchAll();
                             foreach ($results as $result) {
@@ -79,17 +80,21 @@
                 global $db;
 
                 //update user table
-                $query = 'UPDATE users SET first_name="'.$_POST['firstname'].'", last_name="'.$_POST['lastname'].'" WHERE user_id='.$_SESSION['ID'].'';
-                echo '<p>'.$query.'</p>';
+                $query = 'UPDATE users SET first_name=:firstname, last_name=:lastname WHERE user_id=:userid';
+             
                 $statement = $db->prepare($query);
-
+                $statement->bindValue(':firstname', $_POST['firstname']);
+                $statement->bindValue('lastname', $_POST['lastname']);
+                $statement->bindValue(':userid', $_SESSION['ID']);
                 $statement->execute();
                 
                 //update login table
 
-                $query = 'UPDATE login SET Username="'.$_POST['username'].'", Email="'.$_POST['email'].'" WHERE user_id='.$_SESSION['ID'].'';
+                $query = 'UPDATE login SET Username=:username, Email=:email WHERE user_id='.$_SESSION['ID'].'';
                 $statement = $db->prepare($query);
-
+                $statement->bindValue(':username', $_POST['username']);
+                $statement->bindValue(':email', $_POST['email']);
+                $statement->bindValue(':userid', $_SESSION['ID']);
                 $statement->execute();
                 
                 $_COOKIE['username']=$_POST['username'];

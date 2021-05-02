@@ -81,19 +81,19 @@
                     global $db;
 
                     //insert new game
-                    $query = 'INSERT INTO categories (cat_name) VALUES ("'.$_POST['catname'].'")';
-                    echo '<p>' . $query. '</p>';
+                    $query = 'INSERT INTO categories (cat_name) VALUES (:catname)';
                     $statement = $db->prepare($query);
-
+                    $statement->bindValue(':catname', $_POST['catname']);
                     $statement->execute();
 
                     $lastID = $db->lastInsertId();
                 
                     //insert selected categories
                     foreach($_POST['checkboxes'] as $checkbox) {
-                        $query = 'INSERT INTO category_contains (cat_id, question_id) VALUES ('.$lastID.', '.$checkbox.')';
+                        $query = 'INSERT INTO category_contains (cat_id, question_id) VALUES (:qid, :cbox)';
                         $statement = $db->prepare($query);
-
+                        $statement->bindValue(':qid', $lastID);
+                        $statement->bindValue(':cbox', $checkbox);
                         $statement->execute();
                     }
 

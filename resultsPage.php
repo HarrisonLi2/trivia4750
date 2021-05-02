@@ -46,10 +46,10 @@
 
                     global $db;
 
-                    $query = 'SELECT question_id, q_content, answer, worth FROM questions NATURAL JOIN game_contains NATURAL JOIN category_contains NATURAL JOIN questions_answer WHERE game_id='.$_SESSION['currentGame'].'';
+                    $query = 'SELECT question_id, q_content, answer, worth FROM questions NATURAL JOIN game_contains NATURAL JOIN category_contains NATURAL JOIN questions_answer WHERE game_id=:gameid';
                     
                     $statement = $db->prepare($query);
-    
+                    $statement->bindValue(':gameid', $_SESSION['currentGame']);
                     $statement->execute();
                     $QAS = $statement->fetchAll();
 
@@ -71,10 +71,12 @@
 
                     //add game to leaderboard
 
-                    $query = 'INSERT INTO leaderboard (user_id, game_id, score) VALUES ('.$_SESSION['ID'].', '.$_SESSION['currentGame'].', '.$percent.')';
+                    $query = 'INSERT INTO leaderboard (user_id, game_id, score) VALUES (:userid, :gameid, :score)';
     
                     $statement = $db->prepare($query);
-    
+                    $statement->bindValue(':userid', $_SESSION['ID']);
+                    $statement->bindValue(':gameid', $_SESSION['currentGame']);
+                    $statement->bindValue(':score', $percent);
                     $statement->execute();
 
 
