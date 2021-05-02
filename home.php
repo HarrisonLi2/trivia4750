@@ -62,6 +62,8 @@
             <p>Categories contain questions</p>
             <br>
             <p>Questions when answered correctly will award points based on worth</p>
+            <br>
+            <p>Start games from My Games Page</p>
         </div>
 
     </div>
