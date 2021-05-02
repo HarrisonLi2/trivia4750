@@ -53,18 +53,22 @@
                     global $db;
 
                     //insert new question
-                    $query = 'INSERT INTO questions (q_content, difficulty, worth) VALUES ("'.$_POST['question'].'", '. $_POST['rating'].', '.$_POST['worth'].')';
+                    $query = 'INSERT INTO questions (q_content, difficulty, worth) VALUES (:question, :rating, :worth)';
              
                     $statement = $db->prepare($query);
-
+                    $statement->bindValue(':question', $_POST['question']);
+                    $statement->bindValue(':rating', $_POST['rating']);
+                    $statement->bindValue(':worth', $_POST['worth']);
                     $statement->execute();
                 
                     $lastID = $db->lastInsertId();
 
                    //register answer
-                   $query = 'INSERT INTO questions_answer (question_id, answer) VALUES ('.$lastID.', "'. $_POST['answer'].'")';
+                   $query = 'INSERT INTO questions_answer (question_id, answer) VALUES (:qid, :answer)';
         
                    $statement = $db->prepare($query);
+                   $statement->bindValue(':qid', $lastID);
+                   $statement->bindValue(':answer', $_POST['answer']);
 
                    $statement->execute();
                     

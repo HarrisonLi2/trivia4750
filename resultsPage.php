@@ -46,10 +46,10 @@
 
                     global $db;
 
-                    $query = 'SELECT question_id, q_content, answer, worth FROM questions NATURAL JOIN game_contains NATURAL JOIN category_contains NATURAL JOIN questions_answer WHERE game_id='.$_SESSION['currentGame'].'';
+                    $query = 'SELECT question_id, q_content, answer, worth FROM questions NATURAL JOIN game_contains NATURAL JOIN category_contains NATURAL JOIN questions_answer WHERE game_id=:gameid';
                     
                     $statement = $db->prepare($query);
-    
+                    $statement->bindValue(':gameid', $_SESSION['currentGame']);
                     $statement->execute();
                     $QAS = $statement->fetchAll();
 
@@ -62,7 +62,7 @@
                         echo '<h3>Your Answer: '.$_POST[strval($QA['question_id'])].'</h3>';
                         echo '<h3>Correct Answer:'.$QA['answer'].'</h3>';
                         
-                        if(strcasecmp($_POST[strval($QA['question_id'])], $QA['answer'])==0){
+                        if(strcasecmp(trim ($_POST[strval($QA['question_id'])] , " \n\r\t\v\0" ), trim ($QA['answer'], " \n\r\t\v\0" ))==0){
                             $score = $score + $QA['worth'];
                         } else {
 							$wrongpts = $wrongpts + $QA['worth'];
@@ -74,10 +74,12 @@
 
                     //add game to leaderboard
 
-					$query = 'REPLACE INTO leaderboard SET user_id = ' .$_SESSION['ID']. ', game_id = ' .$_SESSION['currentGame']. ', score = '.$percent;
+                    $query = 'INSERT INTO leaderboard (user_id, game_id, score) VALUES (:userid, :gameid, :score)';
     
                     $statement = $db->prepare($query);
-    
+                    $statement->bindValue(':userid', $_SESSION['ID']);
+                    $statement->bindValue(':gameid', $_SESSION['currentGame']);
+                    $statement->bindValue(':score', $percent);
                     $statement->execute();
 
 					$query = 'UPDATE users SET points = points + '.$score.' - '.$wrongpts. ' WHERE user_id = ' .$_SESSION['ID'];

@@ -21,32 +21,34 @@
     <?php
     include("header.php");
     ?>
-    <div class=" games_menu d-flex">
+    <div class="games_menu d-flex">
         <div class="col-md-12" style="padding-left:20%;padding-right:20%">
             <form action="" method="POST">
                 <fieldset>
-                    <?php
-                    global $db;
-                    $query = 'SELECT * FROM users WHERE user_id="' . $_SESSION['ID'] . '"';
-                    $statement = $db->prepare($query);
-                    $statement->execute();
-                    $results = $statement->fetchAll();
-                    foreach ($results as $result) {
+                <?php
+                            global $db;
+                            $query = 'SELECT * FROM users WHERE user_id=:userid';
+                            $statement = $db->prepare($query);
+                            $statement->bindValue(':userid', $_SESSION['ID']);
+                            $statement->execute();
+                            $results = $statement->fetchAll();
+                            foreach ($results as $result) {
 
-                        echo '<label for="firstname">First Name: </label>';
-                        echo '<input type="text" class="form-control" name="firstname" id="firstname" value="' . $result["first_name"] . '" required/>';
+                                echo '<label for="firstname">First Name: </label>';
+                                echo '<input type="text" class="form-control" name="firstname" id="firstname" value="'.$result["first_name"].'" required/>';
 
-                        echo '<label for="firstname">Last Name: </label>';
-                        echo '<input type="text" class="form-control" name="lastname" id="lastname" value="' . $result['last_name'] . '" required/>';
+                                echo '<label for="firstname">Last Name: </label>';
+                                echo '<input type="text" class="form-control" name="lastname" id="lastname" value="'.$result['last_name'].'" required/>';
 
-                        echo '<label for="firstname">User Name: </label>';
-                        echo '<input type="text" class="form-control" name="username" id="username" value="' . $_SESSION['Username'] . '" required/>';
+                                echo '<label for="firstname">User Name: </label>';
+                                echo '<input type="text" class="form-control" name="username" id="username" value="'.$_SESSION['Username'].'" required/>';
 
-                        echo '<label for="firstname">Email: </label>';
-                        echo '<input type="text" class="form-control" name="email" id="email" value="' . $_SESSION['Email'] . '" required/>';
-                    }
+                                echo '<label for="firstname">Email: </label>';
+                                echo '<input type="text" class="form-control" name="email" id="email" value="'.$_SESSION['Email'].'" required/>';
 
-                    ?>
+                            }
+        
+                        ?>
 
                     <input type="submit" name="sub" style="margin-bottom:5%; margin-top:5%" value="Update Profile" class="btn btn-light" />
                 </fieldset>

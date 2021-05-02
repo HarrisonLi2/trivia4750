@@ -17,8 +17,6 @@
 
    
     <div>
-       
-
         <h1>All Games</h1>
         <?php 
         include("header.php");
@@ -38,7 +36,6 @@
                 $query = 'SELECT * FROM games';
 
                 $statement = $db->prepare($query);
-
                 $statement->execute();
                 $results = $statement->fetchAll();
                 foreach ($results as $result) {

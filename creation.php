@@ -68,27 +68,33 @@
                     global $db;
 
                     //insert new game
-                    $query = 'INSERT INTO games (game_name, game_rating, creator) VALUES ("'.$_POST['gamename'].'", '.(int)$_POST['rating'].', "'.$_SESSION['Username'].'")';
+                    $query = 'INSERT INTO games (game_name, game_rating, creator) VALUES (:gamename, :rating, :username)';
             
                     $statement = $db->prepare($query);
-
+                    $statement->bindValue(':gamename', $_POST['gamename']);
+                    $statement->bindValue(':rating', (int)$_POST['rating']);
+                    $statement->bindValue(':username', $_SESSION['Username']);
                     $statement->execute();
                     
                     $lastID = $db->lastInsertId();
 
                     //insert selected categories
                     foreach($_POST['checkboxes'] as $checkbox) {
-                        $query = 'INSERT INTO game_contains (game_id, cat_id) VALUES ('.$lastID.', '.$checkbox.')';
+                        $query = 'INSERT INTO game_contains (game_id, cat_id) VALUES (:gameid, :cbox)';
                         $statement = $db->prepare($query);
+                        $statement->bindValue(':gameid', $lastID);
+                        $statement->bindValue(':cbox', $checkbox);
+                       
 
                         $statement->execute();
                     }
 
                     //add new game to user's game list
-                    $query = 'INSERT INTO has_game (user_id, game_id) VALUES ('.$_SESSION['ID'].', '.$lastID.')';
+                    $query = 'INSERT INTO has_game (user_id, game_id) VALUES (:userid, :gameid)';
             
                     $statement = $db->prepare($query);
-
+                    $statement->bindValue(':userid', $_SESSION['ID']);
+                    $statement->bindValue(':gameid', $lastID);
                     $statement->execute();
 
                     echo "<script>alert('Game: ".$_POST['gamename']." successfully created. Click ok to continue.');</script>";

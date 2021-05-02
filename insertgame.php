@@ -6,9 +6,11 @@
 
             global $db;
 
-            $query = 'INSERT INTO has_game (user_id, game_id) VALUES ('.$_SESSION['ID'].', '. $_POST['gameid'].')';
+            $query = 'INSERT INTO has_game (user_id, game_id) VALUES (:userid, :gameid)';
              
             $statement = $db->prepare($query);
+            $statement->bindValue(':userid', $_SESSION['ID']);
+            $statement->bindValue(':gameid', $_POST['gameid']);
 
             $statement->execute();
         }

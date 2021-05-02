@@ -23,12 +23,12 @@
 
     </div>
     <div class="">
-            <li class="menu">
-                <ul>
-                     <a href="./home.php"><button class="btn btn-primary" >Back to Home</button></a>
-                </ul>
-           
-            </li>
+        <li class="menu">
+            <ul>
+                    <a href="./home.php"><button class="btn btn-primary" >Back to Home</button></a>
+            </ul>
+        
+        </li>
     </div>
 
     <div class="col-md-6">
@@ -38,10 +38,11 @@
                 if (isset($_SESSION['currentGame'])) {
                     global $db;
                     
-                    $query = 'SELECT * FROM games WHERE game_id='.$_SESSION['currentGame'].'';
+                    $query = 'SELECT * FROM games WHERE game_id=:gameid';
                         
                     $statement = $db->prepare($query);
-        
+                    $statement->bindValue(':gameid', $_SESSION['currentGame']);
+
                     $statement->execute();
                     $games = $statement->fetchAll();
                     $game = $games[0];
@@ -50,9 +51,10 @@
 
                         echo '<input type="submit" name="sub" style="margin-bottom:5%; margin-top:5%" value="Submit Game" class="btn btn-primary"/>';
 
-                        $query = 'SELECT * FROM questions NATURAL JOIN game_contains NATURAL JOIN category_contains WHERE game_id='.$_SESSION['currentGame'].'';
+                        $query = 'SELECT * FROM questions NATURAL JOIN game_contains NATURAL JOIN category_contains WHERE game_id=:gameid';
     
                         $statement2 = $db->prepare($query);
+                        $statement2->bindValue(':gameid', $_SESSION['currentGame']);
         
                         $statement2->execute();
                         $questions = $statement2->fetchAll();

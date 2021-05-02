@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,8 +49,10 @@
                 <?php
 
                 global $db;
-                $query = 'SELECT * FROM games WHERE game_id IN (SELECT game_id FROM has_game WHERE user_id=' . $_SESSION['ID'] . ')';
+                $query = 'SELECT * FROM games WHERE game_id IN (SELECT game_id FROM has_game WHERE user_id=:userid)';
                 $statement = $db->prepare($query);
+                $statement->bindValue(':userid', $_SESSION['ID']);
+
                 $statement->execute();
                 $results = $statement->fetchAll();
                 if (empty($results)) {
