@@ -59,12 +59,6 @@
             setcookie('username', $username, time() + 3600);
             header("Location: login.php?status=success");
 			
-			$last_id = $db->lastInsertId();
-			$query = "INSERT INTO users(user_id) VALUES (:last_id)";
-			$statement = $db->prepare($query);
-			$statement->bindValue(':last_id', $last_id);
-			$statement->execute();
-			$statement->closeCursor();
         }
     }
     ?>
