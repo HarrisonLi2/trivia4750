@@ -66,8 +66,9 @@
                         }
                         $totpts = $totpts + $QA['worth'];
                     }
+                    $percent = round($score / $totpts * 100, 2);
 
-                   echo '<h3>Your Score: '.$score.'/'.$totpts.'</h3>';
+                   echo '<h3>Your Score: '.$score.'/'.$totpts.' ('.$percent.'%) Thanks for playing!</h3>';
               }
     ?>
 
